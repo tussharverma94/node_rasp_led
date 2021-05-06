@@ -8,16 +8,18 @@ route.get("/", (req, res) => {
 })
 
 route.post("/", (req, res) => {
-    let button_val = req.body.led_button
-    console.log(button_val);
-    if(parseInt(button_val) == 0){
+    let button_val_on = req.body.led_on
+    let button_val_off = req.body.led_off
+    console.log("button_val_off = " + button_val_off);
+    console.log("button_val_on = " + button_val_on);
+    if(button_val_off == off){
         led.writeSync(0);
     }
-    if(parseInt(button_val) == 1){
+    if(button_val_on == on){
         led.writeSync(1);
     }
     res.render("click.hbs", {
-        messg : "Completed!"
+        mssg : "Completed!"
     })
 })
 
